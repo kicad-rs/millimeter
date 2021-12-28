@@ -44,6 +44,8 @@ macro_rules! unit {
 					/// This is a helper method for creating this type. You might
 					/// want to use the [`Unit`] trait if you don't need a `const`
 					/// function.
+					///
+					///  [`Unit`]: super::Unit
 					pub $($const)? fn try_new(inner: $inner) -> Result<Self, NonFinite> {
 						if !inner.is_finite() {
 							return Err(NonFinite);
@@ -58,6 +60,8 @@ macro_rules! unit {
 					/// ### Panics
 					///
 					/// This method panics if the inner value is non-finite
+					///
+					///  [`Unit`]: super::Unit
 					pub $($const)? fn new(inner: $inner) -> Self {
 						match Self::try_new(inner) {
 							Ok(unit) => unit,
