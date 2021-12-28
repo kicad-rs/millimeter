@@ -335,7 +335,7 @@ unit_trait! {
 		fn km(self) -> mm = self * 1e-6;
 		fn km2(self) -> mm2 = self * 1e-12;
 
-		fn inch(self) -> mm = self * 2.54;
+		fn inch(self) -> mm = self * 25.4;
 		fn inch2(self) -> mm2 = self * 645.16;
 	}
 }
