@@ -1,0 +1,28 @@
+# -*- eval: (cargo-minor-mode 1) -*-
+
+[package]
+name = "millimeter"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+license = "0BSD"
+description = "Primitive type with millimeter unit attached"
+categories = ["mathematics", "science", "no-std"]
+keywords = ["mm", "meter", "inch", "unit"]
+
+repository = "https://github.com/kicad-rs/millimeter"
+
+[features]
+default = ["std"]
+
+# disable this feature to add support for no_std environments
+std = ["serde/std", "thiserror"]
+
+# make mm::new and mm::try_new const (requires a nightly compiler)
+const_float_classify = []
+
+[dependencies]
+paste = "1.0"
+serde = { version = "1.0.132", default-features = false, optional = true }
+thiserror = { version = "1.0", optional = true }
