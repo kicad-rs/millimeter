@@ -1,16 +1,19 @@
+#![cfg_attr(not(feature = "std"), no_std)]
 #![cfg_attr(feature = "const_float_classify", feature(const_float_classify))]
-#![allow(uncommon_codepoints)] 
+#![allow(uncommon_codepoints)]
 #![warn(rust_2018_idioms, unreachable_pub)]
 #![forbid(unsafe_code)]
 
-use paste::paste;
-#[cfg(feature = "serde")]
-use serde::{de::Error as _, Deserialize, Deserializer, Serialize, Serializer};
-use std::{
+use core::{
+	cmp::{Eq, Ord, Ordering},
 	fmt::{self, Debug, Display, Formatter},
+	hash::{Hash, Hasher},
 	ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign},
 	str::FromStr
 };
+use paste::paste;
+#[cfg(feature = "serde")]
+use serde::{de::Error as _, Deserialize, Deserializer, Serialize, Serializer};
 #[cfg(feature = "std")]
 use thiserror::Error;
 
@@ -74,6 +77,7 @@ macro_rules! unit {
 			pub use [<unit_ $name>]::$name;
 		}
 
+		#[cfg(feature = "std")]
 		impl $name {
 			/// Returns the nearest integer to a number. Round half-way cases away
 			/// from `0.0`.
@@ -83,19 +87,19 @@ macro_rules! unit {
 			}
 		}
 
-		impl std::cmp::Eq for $name {}
+		impl Eq for $name {}
 
-		impl std::cmp::Ord for $name {
-			fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+		impl Ord for $name {
+			fn cmp(&self, other: &Self) -> Ordering {
 				// unwrap: Self will never store non-finite values, so all values
 				// should be comparable
 				self.partial_cmp(other).unwrap()
 			}
 		}
 
-		impl std::hash::Hash for $name {
-			fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
-				std::hash::Hash::hash::<H>(&self.raw_value().to_bits(), state);
+		impl Hash for $name {
+			fn hash<H: Hasher>(&self, state: &mut H) {
+				Hash::hash::<H>(&self.raw_value().to_bits(), state);
 			}
 		}
 
@@ -192,6 +196,7 @@ macro_rules! unit {
 			}
 		}
 
+		#[cfg(feature = "serde")]
 		impl<'de> Deserialize<'de> for $name {
 			fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
 			where
@@ -203,6 +208,7 @@ macro_rules! unit {
 			}
 		}
 
+		#[cfg(feature = "serde")]
 		impl Serialize for $name {
 			fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
 			where
@@ -226,6 +232,7 @@ macro_rules! square_unit {
 	};
 
 	(@internal $name:ident($inner:ident) = $base:ident^2) => {
+		#[cfg(feature = "std")]
 		impl $name {
 			pub fn sqrt(self) -> $base {
 				$base::new(self.raw_value().sqrt())
@@ -305,19 +312,19 @@ unit_trait! {
 	pub trait Unit {
 		fn nm(self) -> mm = self * 1e6;
 		fn nm2(self) -> mm2 = self * 1e12;
-		
+
 		fn µm(self) -> mm = self * 1e3;
 		fn µm2(self) -> mm2 = self * 1e6;
-		
+
 		fn mm(self) -> mm;
 		fn mm2(self) -> mm2;
-		
+
 		fn cm(self) -> mm = self * 1e-1;
 		fn cm2(self) -> mm2 = self * 1e-2;
-		
+
 		fn dm(self) -> mm = self * 1e-2;
 		fn dm2(self) -> mm2 = self * 1e-4;
-		
+
 		fn m(self) -> mm = self * 1e-3;
 		fn m2(self) -> mm2 = self * 1e-6;
 
