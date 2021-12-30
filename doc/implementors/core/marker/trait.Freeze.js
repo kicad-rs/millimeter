@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["millimeter"] = [{"text":"impl Freeze for <a class=\"struct\" href=\"millimeter/struct.mm.html\" title=\"struct millimeter::mm\">mm</a>","synthetic":true,"types":["millimeter::unit_mm::mm"]},{"text":"impl Freeze for <a class=\"struct\" href=\"millimeter/struct.mm2.html\" title=\"struct millimeter::mm2\">mm2</a>","synthetic":true,"types":["millimeter::unit_mm2::mm2"]},{"text":"impl Freeze for <a class=\"struct\" href=\"millimeter/struct.NonFinite.html\" title=\"struct millimeter::NonFinite\">NonFinite</a>","synthetic":true,"types":["millimeter::NonFinite"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
