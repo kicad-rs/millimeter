@@ -711,26 +711,26 @@
 
 <span class="macro">unit_trait!</span> {
 	<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Unit</span> {
-		<span class="kw">fn</span> <span class="ident">nm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e6</span>;
-		<span class="kw">fn</span> <span class="ident">nm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e12</span>;
+		<span class="kw">fn</span> <span class="ident">nm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-6</span>;
+		<span class="kw">fn</span> <span class="ident">nm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-12</span>;
 
-		<span class="kw">fn</span> <span class="ident">µm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e3</span>;
-		<span class="kw">fn</span> <span class="ident">µm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e6</span>;
+		<span class="kw">fn</span> <span class="ident">µm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-3</span>;
+		<span class="kw">fn</span> <span class="ident">µm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-6</span>;
 
 		<span class="kw">fn</span> <span class="ident">mm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span>;
 		<span class="kw">fn</span> <span class="ident">mm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span>;
 
-		<span class="kw">fn</span> <span class="ident">cm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-1</span>;
-		<span class="kw">fn</span> <span class="ident">cm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-2</span>;
+		<span class="kw">fn</span> <span class="ident">cm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e1</span>;
+		<span class="kw">fn</span> <span class="ident">cm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e2</span>;
 
-		<span class="kw">fn</span> <span class="ident">dm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-2</span>;
-		<span class="kw">fn</span> <span class="ident">dm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-4</span>;
+		<span class="kw">fn</span> <span class="ident">dm</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e2</span>;
+		<span class="kw">fn</span> <span class="ident">dm2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e4</span>;
 
-		<span class="kw">fn</span> <span class="ident">m</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-3</span>;
-		<span class="kw">fn</span> <span class="ident">m2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-6</span>;
+		<span class="kw">fn</span> <span class="ident">m</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e3</span>;
+		<span class="kw">fn</span> <span class="ident">m2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e6</span>;
 
-		<span class="kw">fn</span> <span class="ident">km</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-6</span>;
-		<span class="kw">fn</span> <span class="ident">km2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e-12</span>;
+		<span class="kw">fn</span> <span class="ident">km</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e6</span>;
+		<span class="kw">fn</span> <span class="ident">km2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">1e12</span>;
 
 		<span class="kw">fn</span> <span class="ident">inch</span>(<span class="self">self</span>) -&gt; <span class="ident">mm</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">25.4</span>;
 		<span class="kw">fn</span> <span class="ident">inch2</span>(<span class="self">self</span>) -&gt; <span class="ident">mm2</span> <span class="op">=</span> <span class="self">self</span> <span class="op">*</span> <span class="number">645.16</span>;
