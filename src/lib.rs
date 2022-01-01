@@ -341,26 +341,26 @@ macro_rules! unit_trait {
 
 unit_trait! {
 	pub trait Unit {
-		fn nm(self) -> mm = self * 1e6;
-		fn nm2(self) -> mm2 = self * 1e12;
+		fn nm(self) -> mm = self * 1e-6;
+		fn nm2(self) -> mm2 = self * 1e-12;
 
-		fn µm(self) -> mm = self * 1e3;
-		fn µm2(self) -> mm2 = self * 1e6;
+		fn µm(self) -> mm = self * 1e-3;
+		fn µm2(self) -> mm2 = self * 1e-6;
 
 		fn mm(self) -> mm;
 		fn mm2(self) -> mm2;
 
-		fn cm(self) -> mm = self * 1e-1;
-		fn cm2(self) -> mm2 = self * 1e-2;
+		fn cm(self) -> mm = self * 1e1;
+		fn cm2(self) -> mm2 = self * 1e2;
 
-		fn dm(self) -> mm = self * 1e-2;
-		fn dm2(self) -> mm2 = self * 1e-4;
+		fn dm(self) -> mm = self * 1e2;
+		fn dm2(self) -> mm2 = self * 1e4;
 
-		fn m(self) -> mm = self * 1e-3;
-		fn m2(self) -> mm2 = self * 1e-6;
+		fn m(self) -> mm = self * 1e3;
+		fn m2(self) -> mm2 = self * 1e6;
 
-		fn km(self) -> mm = self * 1e-6;
-		fn km2(self) -> mm2 = self * 1e-12;
+		fn km(self) -> mm = self * 1e6;
+		fn km2(self) -> mm2 = self * 1e12;
 
 		fn inch(self) -> mm = self * 25.4;
 		fn inch2(self) -> mm2 = self * 645.16;
