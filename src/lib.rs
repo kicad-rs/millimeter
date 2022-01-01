@@ -81,6 +81,15 @@ macro_rules! unit {
 			pub use [<unit_ $name>]::$name;
 		}
 
+		impl Default for $name
+		where
+			$inner: Default
+		{
+			fn default() -> Self {
+				Self::new(Default::default())
+			}
+		}
+
 		#[cfg(feature = "std")]
 		impl $name {
 			/// Returns the nearest integer to a number. Round half-way cases away
