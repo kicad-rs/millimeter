@@ -8,7 +8,9 @@ use core::{
 	cmp::{Eq, Ord, Ordering},
 	fmt::{self, Debug, Display, Formatter},
 	hash::{Hash, Hasher},
-	ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign},
+	ops::{
+		Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Rem, Sub, SubAssign
+	},
 	str::FromStr
 };
 use paste::paste;
@@ -186,6 +188,22 @@ macro_rules! unit {
 		impl DivAssign<$inner> for $name {
 			fn div_assign(&mut self, rhs: $inner) {
 				*self = *self / rhs;
+			}
+		}
+
+		impl Rem for $name {
+			type Output = Self;
+
+			fn rem(self, rhs: Self) -> Self {
+				self % rhs.raw_value()
+			}
+		}
+
+		impl Rem<$inner> for $name {
+			type Output = Self;
+
+			fn rem(self, rhs: $inner) -> Self {
+				Self::new(self.raw_value() % rhs)
 			}
 		}
 
