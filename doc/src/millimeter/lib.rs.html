@@ -341,6 +341,15 @@
 <span id="339">339</span>
 <span id="340">340</span>
 <span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
 </pre><pre class="rust"><code><span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>), <span class="ident">no_std</span>)]</span>
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;const_float_classify&quot;</span>, <span class="ident">feature</span>(<span class="ident">const_float_classify</span>))]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">uncommon_codepoints</span>)]</span>
@@ -422,6 +431,15 @@
 				}
 			}
 			<span class="kw">pub</span> <span class="kw">use</span> [<span class="op">&lt;</span><span class="ident">unit_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>]::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>;
+		}
+
+		<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>
+		<span class="kw">where</span>
+			<span class="macro-nonterminal">$</span><span class="macro-nonterminal">inner</span>: <span class="ident">Default</span>
+		{
+			<span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
+				<span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">Default::default</span>())
+			}
 		}
 
 		<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
