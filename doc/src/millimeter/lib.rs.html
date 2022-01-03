@@ -375,6 +375,19 @@
 <span id="373">373</span>
 <span id="374">374</span>
 <span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
 </pre><pre class="rust"><code><span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>), <span class="ident">no_std</span>)]</span>
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;const_float_classify&quot;</span>, <span class="ident">feature</span>(<span class="ident">const_float_classify</span>))]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">uncommon_codepoints</span>)]</span>
@@ -471,11 +484,24 @@
 
 		<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 		<span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-			<span class="doccomment">/// Returns the nearest integer to a number. Round half-way cases away</span>
+			<span class="doccomment">/// Returns the nearest integer to `self`. Round half-way cases away</span>
 			<span class="doccomment">/// from `0.0`.</span>
 			<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;method returns a new number and does not mutate the original value&quot;</span>]</span>
 			<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">round</span>(<span class="self">self</span>) -&gt; <span class="self">Self</span> {
 				<span class="ident"><span class="self">Self</span>::new</span>(<span class="self">self</span>.<span class="ident">raw_value</span>().<span class="ident">round</span>())
+			}
+
+			<span class="doccomment">/// Returns the absolute value of `self`.</span>
+			<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;method returns a new number and does not mutate the original value&quot;</span>]</span>
+			<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">abs</span>(<span class="self">self</span>) -&gt; <span class="self">Self</span> {
+				<span class="ident"><span class="self">Self</span>::new</span>(<span class="self">self</span>.<span class="ident">raw_value</span>().<span class="ident">abs</span>())
+			}
+
+			<span class="doccomment">/// Computes the four quadrant arctangent of `self` and `other`</span>
+			<span class="doccomment">/// in radians.</span>
+			<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;method returns a new number and does not mutate the original value&quot;</span>]</span>
+			<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">atan2</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) -&gt; <span class="ident">f32</span> {
+				<span class="self">self</span>.<span class="ident">raw_value</span>().<span class="ident">atan2</span>(<span class="ident">other</span>.<span class="ident">raw_value</span>())
 			}
 		}
 
