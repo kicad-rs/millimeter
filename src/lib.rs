@@ -94,11 +94,24 @@ macro_rules! unit {
 
 		#[cfg(feature = "std")]
 		impl $name {
-			/// Returns the nearest integer to a number. Round half-way cases away
+			/// Returns the nearest integer to `self`. Round half-way cases away
 			/// from `0.0`.
 			#[must_use = "method returns a new number and does not mutate the original value"]
 			pub fn round(self) -> Self {
 				Self::new(self.raw_value().round())
+			}
+
+			/// Returns the absolute value of `self`.
+			#[must_use = "method returns a new number and does not mutate the original value"]
+			pub fn abs(self) -> Self {
+				Self::new(self.raw_value().abs())
+			}
+
+			/// Computes the four quadrant arctangent of `self` and `other`
+			/// in radians.
+			#[must_use = "method returns a new number and does not mutate the original value"]
+			pub fn atan2(self, other: Self) -> f32 {
+				self.raw_value().atan2(other.raw_value())
 			}
 		}
 
