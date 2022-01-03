@@ -185,6 +185,13 @@ macro_rules! unit {
 			}
 		}
 
+		impl Div<$name> for $name {
+			type Output = $inner;
+			fn div(self, rhs: $name) -> $inner {
+				self.raw_value() / rhs.raw_value()
+			}
+		}
+
 		impl DivAssign<$inner> for $name {
 			fn div_assign(&mut self, rhs: $inner) {
 				*self = *self / rhs;
