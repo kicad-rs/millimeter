@@ -1,5 +1,5 @@
 #![cfg_attr(not(feature = "std"), no_std)]
-#![cfg_attr(feature = "const_float_classify", feature(const_float_classify))]
+#![cfg_attr(has_const_float_classify, feature(const_float_classify))]
 #![allow(uncommon_codepoints)]
 #![warn(rust_2018_idioms, unreachable_pub)]
 #![forbid(unsafe_code)]
@@ -43,9 +43,10 @@ macro_rules! unit {
 				pub struct $name($inner);
 
 				impl $name {
-					/// This is a helper method for creating this type. You might
-					/// want to use the [`Unit`] trait if you don't need a `const`
-					/// function.
+					/// This is a helper method for creating this type. Take a look at the [`Unit`]
+					/// trait for a more idiomatic way to create this type.
+					///
+					/// **Note:** This method is only `const` when using a nightly Rust compiler.
 					///
 					///  [`Unit`]: super::Unit
 					pub $($const)? fn try_new(inner: $inner) -> Result<Self, NonFinite> {
@@ -55,13 +56,14 @@ macro_rules! unit {
 						Ok(Self(inner))
 					}
 
-					/// This is a helper method for creating this type. You might
-					/// want to use the [`Unit`] trait if you don't need a `const`
-					/// function.
+					/// This is a helper method for creating this type. Take a look at the [`Unit`]
+					/// trait for a more idiomatic way to create this type.
+					///
+					/// **Note:** This method is only `const` when using a nightly Rust compiler.
 					///
 					/// ### Panics
 					///
-					/// This method panics if the inner value is non-finite
+					/// This method panics if the inner value is non-finite.
 					///
 					///  [`Unit`]: super::Unit
 					pub $($const)? fn new(inner: $inner) -> Self {
@@ -306,22 +308,22 @@ macro_rules! square_unit {
 	};
 }
 
-#[cfg(not(feature = "const_float_classify"))]
+#[cfg(not(has_const_float_classify))]
 unit! {
 	pub struct mm(f32);
 }
 
-#[cfg(feature = "const_float_classify")]
+#[cfg(has_const_float_classify)]
 unit! {
 	pub const struct mm(f32);
 }
 
-#[cfg(not(feature = "const_float_classify"))]
+#[cfg(not(has_const_float_classify))]
 square_unit! {
 	pub struct mm2(f32) = mm^2;
 }
 
-#[cfg(feature = "const_float_classify")]
+#[cfg(has_const_float_classify)]
 square_unit! {
 	pub const struct mm2(f32) = mm^2;
 }
