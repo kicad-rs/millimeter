@@ -4,6 +4,55 @@
 #![warn(rust_2018_idioms, unreachable_pub)]
 #![forbid(unsafe_code)]
 
+//! This crate provides [`mm`] and [`mm2`] newtype structs. These can be used both as an indication
+//! that a value is expected to have a certain unit, as well as to prove at compile time that your
+//! computation yields the unit you expect it to.
+//!
+//! # Example
+//!
+//! ```rust
+//! use millimeter::{mm, mm2, Unit};
+//!
+//! #[derive(Clone, Copy, Default)]
+//! pub struct Point {
+//! 	x: mm,
+//! 	y: mm
+//! }
+//!
+//! #[derive(Clone, Copy)]
+//! pub struct Rectangle {
+//! 	top_left: Point,
+//! 	bottom_right: Point
+//! }
+//!
+//! impl Rectangle {
+//! 	pub fn one_inch_square(top_left: Point) -> Self {
+//! 		Self {
+//! 			top_left,
+//! 			bottom_right: Point {
+//! 				x: top_left.x + 1.0.inch(),
+//! 				y: top_left.y + 1.0.inch()
+//! 			}
+//! 		}
+//! 	}
+//!
+//! 	pub fn area(&self) -> mm2 {
+//! 		(self.bottom_right.x - self.top_left.x) * (self.bottom_right.y - self.top_left.y)
+//! 	}
+//!
+//! 	pub fn diagonal_len(&self) -> mm {
+//! 		let a = self.bottom_right.x - self.top_left.x;
+//! 		let b = self.bottom_right.y - self.top_left.y;
+//! 		(a*a + b*b).sqrt()
+//! 	}
+//! }
+//! # assert_eq!(Rectangle::one_inch_square(Point::default()).area(), 1.0.inch2());
+//! # assert_eq!(Rectangle::one_inch_square(Point::default()).diagonal_len(), 2f32.sqrt().inch());
+//! ```
+//!
+//!  [`mm`]: crate::mm
+//!  [`mm2`]: crate::mm2
+
 use core::{
 	cmp::{Eq, Ord, Ordering},
 	fmt::{self, Debug, Display, Formatter},

@@ -12,6 +12,7 @@ categories = ["mathematics", "science", "no-std"]
 keywords = ["mm", "meter", "inch", "unit"]
 
 repository = "https://github.com/kicad-rs/millimeter"
+readme = "crates-io.md"
 
 [features]
 default = ["std"]
