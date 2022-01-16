@@ -1,3 +1,3 @@
 (function() {var implementors = {};
-implementors["millimeter"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.57.0/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"millimeter/struct.NonFinite.html\" title=\"struct millimeter::NonFinite\">NonFinite</a>","synthetic":false,"types":["millimeter::NonFinite"]}];
+implementors["millimeter"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.58.0/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"millimeter/struct.NonFinite.html\" title=\"struct millimeter::NonFinite\">NonFinite</a>","synthetic":false,"types":["millimeter::NonFinite"]}];
 if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
