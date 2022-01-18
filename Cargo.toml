@@ -2,8 +2,7 @@
 
 [package]
 name = "millimeter"
-version = "0.0.0"
-publish = false
+version = "0.1.0"
 edition = "2021"
 
 license = "0BSD"
@@ -13,6 +12,7 @@ keywords = ["mm", "meter", "inch", "unit"]
 
 repository = "https://github.com/kicad-rs/millimeter"
 readme = "crates-io.md"
+include = ["build.rs", "src/**/*", "crates-io.md", "LICENSE"]
 
 [features]
 default = ["std"]

@@ -55,5 +55,5 @@ by you, as defined in the [Apache License, Version 2.0](https://apache.org/licen
 be licensed as above, without any additional terms or conditions.
 
  [__cargo_doc2readme_dependencies_hash]: 3EC75BDA2FA622635DE524A794D31270BB2E29844E13EEE2FDC052ECC4C570DC
- [__link0]: https://docs.rs/millimeter/0.0.0/millimeter/?search=mm
- [__link1]: https://docs.rs/millimeter/0.0.0/millimeter/?search=mm2
+ [__link0]: https://docs.rs/millimeter/0.1.0/millimeter/?search=mm
+ [__link1]: https://docs.rs/millimeter/0.1.0/millimeter/?search=mm2
